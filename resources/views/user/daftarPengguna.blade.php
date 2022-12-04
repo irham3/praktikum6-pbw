@@ -47,7 +47,7 @@
             columns: [
                 {data:'id', name: 'id'},
                 {data:'fullname', name: 'fullname'},
-                {data:'alamat', name: 'alamat'},
+                {data:'address', name: 'address'},
                 {data:'birthdate', name: 'birthdate'},
                 {data:'phoneNumber', name: 'phoneNumber'},
                 {data:'action', name: 'action', orderable: false, searchable: false}

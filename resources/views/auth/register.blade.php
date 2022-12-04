@@ -70,11 +70,11 @@
 
             <!-- Alamat -->
             <div>
-                <x-input-label for="alamat" :value="__('Alamat')" />
+                <x-input-label for="address" :value="__('Alamat')" />
 
-                <x-text-input id="alamat" class="block mt-1 w-full" type="text" name="alamat" :value="old('alamat')" required autofocus />
+                <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus />
 
-                <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
+                <x-input-error :messages="$errors->get('address')" class="mt-2" />
             </div>
 
             <!-- No Telephone -->

@@ -56,6 +56,7 @@
                     </div>
 
                     <div>
+                      <input type="hidden" name="idKoleksi" value="{{ $detailTransaction->idKoleksi }}">
                       <x-input-label for="koleksi" :value="__('Koleksi')" />
       
                       <x-text-input id="koleksi" class="block mt-1 w-full" type="text" name="koleksi" :value="old('koleksi')" autocomplete="off" value="{{ $detailTransaction->koleksi }}" disabled/>

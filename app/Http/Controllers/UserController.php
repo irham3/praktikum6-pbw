@@ -26,7 +26,7 @@ class UserController extends Controller
             'fullname'      => ['required', 'string', 'max:255'],
             'email'         => ['email'],
             'password'      => ['required', 'confirmed', Password::defaults()],
-            'alamat'       => ['required', 'string'],
+            'address'       => ['required', 'string'],
             'birthDate'     => ['required', 'date', 'before:today'],
             'phoneNumber'   => ['required']
         ],
@@ -41,7 +41,7 @@ class UserController extends Controller
             'fullname'  => $request->fullname,
             'email'  => $request->email,
             'password'  => Hash::make($request->password),
-            'alamat'  => $request->alamat,
+            'address'  => $request->address,
             'birthdate'  => $request->birthDate,
             'phoneNumber'  => $request->phoneNumber,
         ]);
@@ -58,7 +58,7 @@ class UserController extends Controller
             ->select(
                 'id as id',
                 'fullname as fullname',
-                'alamat as alamat',
+                'address as address',
                 'birthdate as birthdate',
                 'phoneNumber as phoneNumber')
             ->orderBy('id', 'asc')
@@ -79,7 +79,7 @@ class UserController extends Controller
         $request->validate([
             'fullname'      => ['required', 'string', 'max:255'],
             'password'      => ['required'],
-            'alamat'       => ['required', 'string'],
+            'address'       => ['required', 'string'],
             'phoneNumber'   => ['required'],
         ]);
 
@@ -88,7 +88,7 @@ class UserController extends Controller
         ->update([
             'fullname'  => $request->fullname,
             'password'  => Hash::make($request->password),
-            'alamat'  => $request->alamat,
+            'address'  => $request->address,
             'phoneNumber'  => $request->phoneNumber,
         ]);
 

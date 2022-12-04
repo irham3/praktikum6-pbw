@@ -15,10 +15,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->autoIncrement();
             $table->unsignedBigInteger('userIdPetugas');
+            $table->foreign('userIdPetugas')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('userIdPeminjam');
-            $table->date('tanggalPinjam')->nullable();
+            $table->foreign('userIdPeminjam')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('tanggalPinjam');
             $table->date('tanggalSelesai')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

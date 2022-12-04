@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'fullname'      => ['required', 'string', 'max:255'],
             'email'         => ['email'],
             'password'      => ['required', 'confirmed', Rules\Password::defaults()],
-            'alamat'       => ['required', 'string'],
+            'address'       => ['required', 'string'],
             'birthdate'     => ['required', 'date', 'before:today'],
             'phoneNumber'   => ['required']
         ],
@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
             'fullname'  => $request->fullname,
             'email'  => $request->email,
             'password'  => Hash::make($request->password),
-            'alamat'  => $request->alamat,
+            'address'  => $request->address,
             'birthdate'  => $request->birthdate,
             'phoneNumber'  => $request->phoneNumber,
         ]);

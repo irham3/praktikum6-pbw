@@ -25,7 +25,7 @@ class DetailTransactionController extends Controller
             ),
             'c.nama as koleksi')
         ->join('collections as c', 'c.id', '=', 'collectionId')
-        ->join('transactions as t', 't.id', '=', 'transactionId')
+        ->join('transactions as t', 't.id', '=', 'dt.transactionId')
         ->where('transactionId', '=', $transactionId)->get();
 
         return DataTables::of($detail_transactions)
@@ -50,7 +50,8 @@ class DetailTransactionController extends Controller
             'dt.status',
             'uPinjam.fullname as namaPeminjam',
             'uTugas.fullname as namaPetugas',
-            'c.nama as koleksi')
+            'c.nama as koleksi',
+            'c.id as idKoleksi')
         ->join('collections as c', 'c.id', '=', 'collectionId')
         ->join('transactions as t', 't.id', '=', 'transactionId')
         ->join('users as uPinjam', 't.userIdPeminjam', '=', 'uPinjam.id')
@@ -74,8 +75,8 @@ class DetailTransactionController extends Controller
 
             if($request->status == 2) {
                 // Kalau dikembalikan
-                DB::table('collections')->increment('jumlahSisa');
-                DB::table('collections')->decrement('jumlahKeluar');
+                DB::table('collections')->where('id', '=', $request->idKoleksi)->increment('jumlahSisa');
+                DB::table('collections')->where('id', '=', $request->idKoleksi)->decrement('jumlahKeluar');
             } else {
                 // Kalau hilang
                 DB::table('collections')->increment('jumlahSisa');

@@ -94,8 +94,8 @@ class TransactionController extends Controller
         $detilTransaksi1->status = 1;
         $detilTransaksi1->save();
         //Mengurangi jumlah stok
-        DB::table('collections')->where('id', $request->koleksi1)->decrement('jumlahSisa');
-        DB::table('collections')->where('id', $request->koleksi1)->increment('jumlahKeluar');
+        DB::table('collections')->where('id', '=', $request->koleksi1)->decrement('jumlahSisa');
+        DB::table('collections')->where('id', '=', $request->koleksi1)->increment('jumlahKeluar');
         
         // Peminjaman koleksi 2
         if($request->koleksi2 > 0) {
@@ -105,8 +105,8 @@ class TransactionController extends Controller
             $detilTransaksi2->status = 1;
             $detilTransaksi2->save();
             //Mengurangi jumlah stok
-            DB::table('collections')->where('id', $request->koleksi2)->decrement('jumlahSisa');
-            DB::table('collections')->where('id', $request->koleksi2)->increment('jumlahKeluar');
+            DB::table('collections')->where('id', '=', $request->koleksi2)->decrement('jumlahSisa');
+            DB::table('collections')->where('id', '=', $request->koleksi2)->increment('jumlahKeluar');
         }
         // Peminjaman koleksi 3
         if($request->koleksi3 > 0) {
@@ -116,8 +116,8 @@ class TransactionController extends Controller
             $detilTransaksi3->status = 1;
             $detilTransaksi3->save();
             //Mengurangi jumlah stok
-            DB::table('collections')->where('id', $request->koleksi3)->decrement('jumlahSisa');
-            DB::table('collections')->where('id', $request->koleksi3)->increment('jumlahKeluar');
+            DB::table('collections')->where('id', '=', $request->koleksi3)->decrement('jumlahSisa');
+            DB::table('collections')->where('id', '=', $request->koleksi3)->increment('jumlahKeluar');
         }
 
         return redirect()->route('transaksi')->with('status','Peminjaman berhasil');

@@ -15,8 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('collections', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
+            $table->integer('id')->autoIncrement();
+            $table->string('nama', 100);
             $table->tinyInteger('jenis');
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('jumlahAwal');
