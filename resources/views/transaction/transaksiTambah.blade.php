@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Registrasi Pengguna') }}
+            {{ __('Tambah Transaksi') }}
         </h2>
     </x-slot>
 
@@ -26,9 +26,9 @@
 
                     <!-- Peminjam -->
                     <div>
-                        <x-input-label for="peminjam" :value="__('Peminjam')" />
+                        <x-input-label for="idPeminjam" :value="__('Peminjam')" />
         
-                        <select id="peminjam" name="peminjam" class="form-select" required>
+                        <select id="idPeminjam" name="idPeminjam" class="form-select" required>
                               <option>--Pilih dahulu--</option>
                               @foreach ($users as $user)
                                 @if ($user->id == old('userPeminjam'))
@@ -39,7 +39,7 @@
                               @endforeach
                           </select>
         
-                        <x-input-error :messages="$errors->get('peminjam')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('idPeminjam')" class="mt-2" />
                     </div>
 
                     <!-- Koleksi1 -->
@@ -47,7 +47,7 @@
                         <x-input-label for="koleksi1" :value="__('Koleksi1')" />
         
                         <select id="koleksi1" name="koleksi1" class="form-select" required>
-                              <option>--Pilih dahulu--</option>
+                              <option value="-1">--Pilih dahulu--</option>
                               @foreach ($collections as $collection)
                                 @if ($collection->id == old('koleksi1'))
                                     <option value="{{ $collection->id }}" selected>{{ $collection->nama }}</option>    
@@ -65,7 +65,7 @@
                         <x-input-label for="koleksi2" :value="__('Koleksi2')" />
         
                         <select id="koleksi2" name="koleksi2" class="form-select" required>
-                              <option>--Pilih dahulu--</option>
+                              <option value="-1">--Pilih dahulu--</option>
                               @foreach ($collections as $collection)
                                 @if ($collection->id == old('koleksi2'))
                                     <option value="{{ $collection->id }}" selected>{{ $collection->nama }}</option>    
@@ -83,7 +83,7 @@
                         <x-input-label for="koleksi3" :value="__('Koleksi3')" />
         
                         <select id="koleksi3" name="koleksi3" class="form-select" required>
-                              <option>--Pilih dahulu--</option>
+                              <option value="-1">--Pilih dahulu--</option>
                               @foreach ($collections as $collection)
                                 @if ($collection->id == old('koleksi3'))
                                     <option value="{{ $collection->id }}" selected>{{ $collection->nama }}</option>    

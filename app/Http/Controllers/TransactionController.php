@@ -28,7 +28,7 @@ class TransactionController extends Controller
         ->select(
             'transactions.id as id',
             'u1.fullname as fullnamePeminjam',
-            'u1.fullname as fullnamePetugas',
+            'u2.fullname as fullnamePetugas',
             'tanggalPinjam as tanggalPinjam',
             'tanggalSelesai as tanggalSelesai',
         )
@@ -67,8 +67,8 @@ class TransactionController extends Controller
     public function store(Request $request) 
     {
         $request->validate([
-            'idPeminjam'      => ['required', 'intger', 'gt:0'],
-            'kleksi1'     => ['required', 'integer', 'gt:0']
+            'idPeminjam'      => ['required', 'integer', 'gt:0'],
+            'koleksi1'     => ['required', 'integer', 'gt:0']
         ],
         [
             'idPeminjam.gt'   => 'Pilih satu Species',
@@ -87,7 +87,7 @@ class TransactionController extends Controller
 
         // Membuat object detail transaction dan simpan kedalam table detail_transactions
 
-        // Peminjam koleksi 1
+        // Peminjaman koleksi 1
         $detilTransaksi1 = new DetailTransaction;
         $detilTransaksi1->transactionId = $lastTransactionIdStored;
         $detilTransaksi1->collectionId = $request->koleksi1;
@@ -97,7 +97,7 @@ class TransactionController extends Controller
         DB::table('collections')->where('id', $request->koleksi1)->decrement('jumlahSisa');
         DB::table('collections')->where('id', $request->koleksi1)->increment('jumlahKeluar');
         
-        // Peminjam koleksi 2
+        // Peminjaman koleksi 2
         if($request->koleksi2 > 0) {
             $detilTransaksi2 = new DetailTransaction;
             $detilTransaksi2->transactionId = $lastTransactionIdStored;
@@ -108,7 +108,7 @@ class TransactionController extends Controller
             DB::table('collections')->where('id', $request->koleksi2)->decrement('jumlahSisa');
             DB::table('collections')->where('id', $request->koleksi2)->increment('jumlahKeluar');
         }
-        // Peminjam koleksi 3
+        // Peminjaman koleksi 3
         if($request->koleksi3 > 0) {
             $detilTransaksi3 = new DetailTransaction;
             $detilTransaksi3->transactionId = $lastTransactionIdStored;

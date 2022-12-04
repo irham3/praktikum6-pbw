@@ -50,7 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     // Routing ke TransactionController
     Route::get('/transaksi',[TransactionController::class, 'index'])->name('transaksi');
     Route::get('/transaksiTambah',[TransactionController::class, 'create'])->name('tambahTransaksi');
-    Route::get('/transaksiStore',[TransactionController::class, 'store']);
+    Route::post('/transaksiStore',[TransactionController::class, 'store']);
     Route::get('/transaksiView/{transaction}',[TransactionController::class, 'show']);
     
     Route::get('/getAllTransactions', [TransactionController::class,
